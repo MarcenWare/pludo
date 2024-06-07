@@ -9,7 +9,7 @@ import org.springframework.statemachine.config.builders.StateMachineTransitionCo
 import java.util.EnumSet;
 
 @Configuration
-@EnableStateMachineFactory
+@EnableStateMachineFactory(name = "lobbyStateMachineFactory")
 public class LobbyStateMachineConfig extends EnumStateMachineConfigurerAdapter<LobbyState, LobbyEvent> {
 
     @Override
@@ -18,7 +18,7 @@ public class LobbyStateMachineConfig extends EnumStateMachineConfigurerAdapter<L
         states
                 .withStates()
                 .initial(LobbyState.WAITING)
-                .end(LobbyState.GAME_START)
+                .end(LobbyState.IN_GAME)
                 .states(EnumSet.allOf(LobbyState.class));
     }
 
@@ -33,7 +33,7 @@ public class LobbyStateMachineConfig extends EnumStateMachineConfigurerAdapter<L
                 .and()
                 .withExternal()
                 .source(LobbyState.READY)
-                .target(LobbyState.GAME_START)
+                .target(LobbyState.IN_GAME)
                 .event(LobbyEvent.START_GAME);
     }
 }

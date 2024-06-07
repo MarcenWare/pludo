@@ -9,7 +9,7 @@ import org.springframework.statemachine.config.builders.StateMachineTransitionCo
 import java.util.EnumSet;
 
 @Configuration
-@EnableStateMachineFactory
+@EnableStateMachineFactory(name = "playerStateMachineFactory")
 public class PlayerStateMachineConfig extends EnumStateMachineConfigurerAdapter<PlayerState, PlayerEvent> {
 
     @Override
@@ -17,7 +17,7 @@ public class PlayerStateMachineConfig extends EnumStateMachineConfigurerAdapter<
             throws Exception {
         states
                 .withStates()
-                .initial(PlayerState.WAITING)
+                .initial(PlayerState.IDLE)
                 .end(PlayerState.DISCONNECTED)
                 .states(EnumSet.allOf(PlayerState.class));
     }
@@ -25,25 +25,25 @@ public class PlayerStateMachineConfig extends EnumStateMachineConfigurerAdapter<
     @Override
     public void configure(StateMachineTransitionConfigurer<PlayerState, PlayerEvent> transitions)
             throws Exception {
-        transitions
-                .withExternal()
-                .source(PlayerState.WAITING)
-                .target(PlayerState.ROLL_DICE)
-                .event(PlayerEvent.ROLL_DICE)
-                .and()
-                .withExternal()
-                .source(PlayerState.ROLL_DICE)
-                .target(PlayerState.MOVE_PIECE)
-                .event(PlayerEvent.MOVE_PIECE)
-                .and()
+//        transitions
+//                .withExternal()
+//                .source(PlayerState.IDLE)
+//                .target(PlayerState.ROLL_DICE)
+//                .event(PlayerEvent.ROLL_DICE)
+//                .and()
+//                .withExternal()
+//                .source(PlayerState.ROLL_DICE)
+//                .target(PlayerState.MOVE_PIECE)
+//                .event(PlayerEvent.MOVE_PIECE)
+//                .and()
                 //.withExternal()
                 //.source(PlayerState.MOVE_PIECE)
                 //.target(PlayerState.WAITING)
                 //.event(PlayerEvent.END_TURN)
                 //.and()
-                .withExternal()
-                .source(PlayerState.WAITING)
-                .target(PlayerState.DISCONNECTED)
-                .event(PlayerEvent.DISCONNECT);
+//                .withExternal()
+//                .source(PlayerState.WAITING)
+//                .target(PlayerState.DISCONNECTED)
+//                .event(PlayerEvent.DISCONNECT);
     }
 }

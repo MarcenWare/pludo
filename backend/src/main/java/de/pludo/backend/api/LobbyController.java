@@ -1,7 +1,6 @@
 package de.pludo.backend.api;
 
 import de.pludo.backend.lobby.LobbyService;
-import de.ludo.backend.lobby.dto.*;
 import de.pludo.backend.lobby.dto.CreateLobbyRequest;
 import de.pludo.backend.lobby.dto.CreateLobbyResponse;
 import de.pludo.backend.lobby.dto.JoinLobbyRequest;

@@ -1,6 +1,8 @@
 package de.pludo.backend.player;
 
 public enum PlayerState {
+    IDLE,
+
     IN_LOBBY,
     IN_LOBBY_IDLE,
     IN_LOBBY_READY,

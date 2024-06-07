@@ -5,6 +5,6 @@ import org.springframework.statemachine.config.EnableStateMachineFactory;
 import org.springframework.statemachine.config.EnumStateMachineConfigurerAdapter;
 
 @Configuration
-@EnableStateMachineFactory
+@EnableStateMachineFactory(name = "gameStateMachineFactory")
 public class GameStateMachineConfig extends EnumStateMachineConfigurerAdapter<GameState, GameEvent> {
 }
